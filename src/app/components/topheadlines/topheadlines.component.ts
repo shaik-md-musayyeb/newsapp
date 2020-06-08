@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from "../../service/api.service";
 
 @Component({
   selector: 'app-topheadlines',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topheadlines.component.css']
 })
 export class TopheadlinesComponent implements OnInit {
-
-  constructor() { }
+  articles: Array<string>=[];
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.apiService.getTopHeadlines().subscribe( data =>{
+      this.articles=data['articles'];
+    });
   }
 
 }

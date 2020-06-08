@@ -1,1 +1,14 @@
-<p>header works!</p>
+<div class="container">
+    <div class="logo">
+        <img src="./../../../assets/logo-transparent.png" alt="logo">
+    </div>
+    <div class="nav">
+        <ul>
+            <a [routerLink]="['home']" mat-raised-button class="mat-button" color='primary' [routerLinkActive]="['active']">Home</a>
+            <a [routerLink]="['topheadlines']" mat-raised-button class="mat-button" color='primary' [routerLinkActive]="['active']">Trending</a>
+            <a [routerLink]="['allnews']" mat-raised-button class="mat-button" color='primary' [routerLinkActive]="['active']">All News</a>
+            <a [routerLink]="['search']" class="mat-button"><mat-icon color='primary' class="icon-display" [routerLinkActive]="['active']">search</mat-icon></a>
+   
+        </ul>
+    </div>
+</div>

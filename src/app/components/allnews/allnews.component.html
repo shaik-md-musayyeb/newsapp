@@ -1,1 +1,44 @@
-<p>allnews works!</p>
+<!-- <div *ngFor="let source of sources">
+    <li>{{source.name}}</li>
+</div> -->
+<div class="loader" *ngIf="!(sources.length > 0)">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="selector" *ngIf="(sources.length > 0)">
+    <mat-form-field>
+        <mat-label>Select Source to get news</mat-label>
+            <mat-select name="source" class="option">
+                <mat-option *ngFor="let source of sources" [value]="source.name"  (click)="changeSource(source.id)">
+                    {{source.name}}
+                </mat-option>
+            </mat-select>
+            
+    </mat-form-field>
+    <!-- <div class="loader" *ngIf="!(articles.length > 0)">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner> </div> -->
+    </div>
+    <div *ngIf="(articles.length > 0)">
+        <h1 style="text-align: center;">Top headlines from {{selectedSource | uppercase }}</h1>
+    </div>
+
+    <div class="container">
+        
+    
+        <div *ngFor="let article of articles" class="content" >
+            <img src="{{article.urlToImage}}" alt="{{article.title}}"> 
+    
+            <h2>{{article.title}}</h2>
+            
+            
+            <p class="article">{{article.description}}</p>
+            
+            <p class="readMore">  <a href="{{article.url}}" target="_blank"><button>Read Full Article</button> </a></p>
+        </div>
+        
+    </div>
+
+<!-- </div> -->
+
+<div style="padding-bottom:30%"></div>
+
+<p> Selected source: {{selectedSource}} </p>

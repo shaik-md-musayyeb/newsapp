@@ -1,1 +1,49 @@
-<p>search works!</p>
+<!-- <p>search works!</p>
+<mat-form-field>
+    <input matInput placeholder="search" #userQury>
+</mat-form-field>
+
+ 
+<mat-form-field>
+    <input type="reset" value="Search">
+</mat-form-field> -->
+
+
+<form [formGroup]="searchNews" class="newsSearch">
+    <div>
+        
+    <input matInput placeholder="type here..." formControlName="searchField" #userQury >
+    <input type="reset" value="Search" (click)="search(userQury.value)" mat-raised-button color='warn'>
+
+    </div>
+    
+
+</form>
+
+<div class="loader" *ngIf="!(articles.length > 0)">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <div style="padding-bottom:30%"></div>
+</div>
+
+<div *ngIf="(articles.length > 0)">
+    <h1 style="text-align: center;">Results for {{userQuery | uppercase }}</h1>
+</div>
+
+<div class="container">
+    
+
+    <div *ngFor="let article of articles" class="content" >
+        <img src="{{article.urlToImage}}" alt="{{article.title}}"> 
+
+        <h2>{{article.title}}</h2>
+        
+        
+        <p class="article">{{article.description}}</p>
+        
+        <p class="readMore">  <a href="{{article.url}}" target="_blank"><button>Read Full Article</button> </a></p>
+    </div>
+    
+</div>
+<div style="padding-bottom:30%"></div>
+
+
